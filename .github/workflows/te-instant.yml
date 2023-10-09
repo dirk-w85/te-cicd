@@ -27,7 +27,7 @@ jobs:
 
   build-website:
     runs-on: ubuntu-latest
-    nees: pre-test
+    needs: pre-test
     env:
       HUGO_VERSION: 0.114.0
     steps:
