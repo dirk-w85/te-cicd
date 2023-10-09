@@ -61,7 +61,7 @@ jobs:
           path: ./public
 
   deploy-website:
-    needs: build-wesbite
+    needs: build-website
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
