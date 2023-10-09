@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Website Update Check
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        check-latest: true
+
+    - name: Run the Code and run Pre Tests in ThousandEyes
+#      run: python3 run main.go -domain=${{ inputs.domain }} -token=${{ secrets.TETOKEN }} -agentlabel=Servicefinder -debug=true 
+      run: python3 te-cicd-pre.py 
+      
+
+    - name: Run the Code and run Post Tests in ThousandEyes
+      run: python3 te-cicd-post.py 
