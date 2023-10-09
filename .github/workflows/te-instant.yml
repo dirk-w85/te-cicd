@@ -23,7 +23,7 @@ jobs:
 
     - name: Run the Code and run Pre Tests in ThousandEyes
 #      run: python3 run main.go -domain=${{ inputs.domain }} -token=${{ secrets.TETOKEN }} -agentlabel=Servicefinder -debug=true 
-      run: python3 te-cicd-pre.py ${{ secrets.TETOKEN }}
+      run: python3 te-cicd.py ${{ secrets.TETOKEN }} pre
 
   deploy:
     runs-on: ubuntu-latest
@@ -45,4 +45,4 @@ jobs:
         check-latest: true      
 
     - name: Run the Code and run Post Tests in ThousandEyes
-      run: python3 te-cicd-post.py ${{ secrets.TETOKEN }}
+      run: python3 te-cicd.py ${{ secrets.TETOKEN }} post
