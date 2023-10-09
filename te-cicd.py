@@ -72,8 +72,8 @@ def main():
   Settings={}
   Settings["type"]= sys.argv[2] #pre or post
   Settings["teToken"] = sys.argv[1]
-  Settings["teTarget"] = "https://dirkwblog.github.io/blog/posts/2023-08-16-hugocli/"
-  
+  #Settings["teTarget"] = "https://dirkwblog.github.io/blog/posts/2023-08-16-hugocli/"
+  Settings["teTarget"] = sys.argv[3]
   
   print("-"*20)
 
