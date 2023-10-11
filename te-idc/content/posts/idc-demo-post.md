@@ -9,3 +9,5 @@ draft = false
 This is **bold** text, and this is *emphasized* text.
 
 Visit the [Hugo](https://gohugo.io) website!
+
+![targets](/images/my_post_folder/my_image.png)
