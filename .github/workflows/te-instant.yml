@@ -125,3 +125,17 @@ jobs:
 
     - name: Run the Code and run Post Tests in ThousandEyes
       run: python3 te-cicd.py ${{ secrets.TETOKEN }} post https://dirk-w85.github.io/te-cicd/posts/idc-demo-post/
+
+  revert-commit:
+    runs-on: ubuntu-latest
+
+    if: ${{ failed() && steps.post-test.conclusion == 'failure'  }}
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v3
+
+      - name: Automatic Revert
+        uses: srt32/revert@v0.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
