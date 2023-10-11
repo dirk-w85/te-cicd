@@ -127,10 +127,9 @@ jobs:
       run: python3 te-cicd.py ${{ secrets.TETOKEN }} post https://dirk-w85.github.io/te-cicd/posts/idc-demo-post/
 
   revert-commit:
-    runs-on: ubuntu-latest
-
     if: ${{ failure() }}
-
+    needs: post-test
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout latest code
         uses: actions/checkout@v3
