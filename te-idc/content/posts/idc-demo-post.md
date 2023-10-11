@@ -18,7 +18,7 @@ See [GitHub](https://github.com/dirk-w85/te-cicd)
 
 ### Workflow
 
-![Workflow](/cicd-workflow.jpg) 
+![Workflow](/te-cicd/cicd-workflow.jpg) 
 
 ![Failed Image](/images/my_post_folder/my_image.png)
 
