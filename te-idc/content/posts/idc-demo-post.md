@@ -12,7 +12,7 @@ Goal of the Demo is show the art of possible on how ThousandEyes could be used t
 Visit the [ThousandEyes](https://www.thousandeyes.com) website!
 
 ## The Demo
-This Demo conists of a Python script, creating Instant Tests in ThousandEyes. All triggered by an Git Push on Github. The "Push" start an GitHub Actions worklow. 
+This Demo conists of a Python script, creating Instant Tests in ThousandEyes. All triggered by an Git Push on Github. The "Push" starts an GitHub Actions worklow. 
 
 See [GitHub](https://github.com/dirk-w85/te-cicd)
 
@@ -21,5 +21,3 @@ See [GitHub](https://github.com/dirk-w85/te-cicd)
 ![Workflow](/te-cicd/cicd-workflow.jpg) 
 
 ![Failed Image](/images/my_post_folder/my_image.png)
-
-![Failed Image2](/images/my_post_folder/my_image2.png)
