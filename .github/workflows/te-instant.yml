@@ -90,7 +90,8 @@ jobs:
           path: te-idc/public
 
   deploy-website:
-    needs: build-website
+    if: ${{ success() }}
+    needs: [pre-test,build-website]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
