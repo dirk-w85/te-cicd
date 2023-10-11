@@ -30,6 +30,16 @@ import logging
 import time
 from datetime import datetime
 
+def compare_pre_post(Settings, Results):
+    f = open('pre.json')
+    preResults = json.load(f)
+    f.close()
+
+    if Results["teInstant"]["numErrors"] > preResults["teInstant"]["numErrors"]:
+        print("Change FAILED !!")
+    else:
+        print("Change succesful.")
+
 
 def te_create_instant_test(Settings, DeployCount):
 
@@ -92,6 +102,12 @@ def check_instant_test(Settings, teTestId):
         f = open("pre.json", "w")
         f.write(json.dumps(Results))
         f.close()
+    elif Settings["type"] == "post":
+        f = open("post.json", "w")
+        f.write(json.dumps(Results))
+        f.close()
+
+        compare_pre_post(Settings, Results)
 
 
 
