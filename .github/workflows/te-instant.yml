@@ -44,7 +44,7 @@ jobs:
 
     - name: Run the Code and run Pre Tests in ThousandEyes
 #      run: python3 run main.go -domain=${{ inputs.domain }} -token=${{ secrets.TETOKEN }} -agentlabel=Servicefinder -debug=true 
-      run: python3 te-cicd.py ${{ secrets.TETOKEN }} pre https://dirk-w85.github.io/te-cicd/
+      run: python3 te-cicd.py ${{ secrets.TETOKEN }} pre https://dirk-w85.github.io/te-cicd/posts/idc-demo-post/
 
     
     - name: Archive Pre Test results
@@ -124,4 +124,4 @@ jobs:
         pip install requests   
 
     - name: Run the Code and run Post Tests in ThousandEyes
-      run: python3 te-cicd.py ${{ secrets.TETOKEN }} post https://dirk-w85.github.io/te-cicd/
+      run: python3 te-cicd.py ${{ secrets.TETOKEN }} post https://dirk-w85.github.io/te-cicd/posts/idc-demo-post/
