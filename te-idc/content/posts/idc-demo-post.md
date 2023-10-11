@@ -12,4 +12,4 @@ Visit the [Hugo](https://gohugo.io) website!
 
 ![Failed Image](/images/my_post_folder/my_image.png)
 
-![Failed Image2](/images/my_post_folder/my_image.png)
+![Failed Image2](/images/my_post_folder/my_image2.png)
