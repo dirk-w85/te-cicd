@@ -1,11 +1,4 @@
 #!/usr/bin/env python3
-
-
-print("Pre Deployment Check")
-
-print("Test ID - 99837729923")
-
-
 # -*- coding: UTF-8 -*-# enable debugging
 print ("""
 Copyright (c) 2021 Cisco and/or its affiliates.
@@ -26,7 +19,7 @@ __author__ = "Dirk Woellhaf <dwoellha@cisco.com>"
 __contributors__ = [
     "Dirk Woellhaf <dwoellha@cisco.com>"
 ]
-__copyright__ = "Copyright (c) 2021 Cisco and/or its affiliates."
+__copyright__ = "Copyright (c) 2023 Cisco and/or its affiliates."
 __license__ = "Cisco Sample Code License, Version 1.0"
 
 
@@ -67,20 +60,50 @@ def te_create_instant_test(Settings, DeployCount):
         print(StateMsg)
         return InstatTestData["test"][0]["testId"]
 
+def check_instant_test(Settings, teTestId):   
+    gotResults = 0
+    #time.sleep(30) 
+    url = "https://api.thousandeyes.com/v6/web/page-load/"+str(teTestId)+".json"
+
+    headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer '+Settings["teToken"]
+    }
+
+    while gotResults == 0:
+        print("Checking for Test Results...")
+        response = requests.request("GET", url, headers=headers)
+
+        if response.status_code >= 300:
+            print("Failed GET response {} {}".format(response.status_code, response.json()))
+            logging.error("Failed POST response {} {}".format(response.status_code, response.json()))
+        elif response.status_code == 200:
+            InstantTestResults = json.loads(response.text)
+            if "pageLoad" in InstantTestResults["web"]:
+                #print(InstantTestResults["web"]["pageLoad"][0])
+                gotResults = 1
+        time.sleep(5)
+    
+    Results = {}
+    Results["teTestId"] = teTestId
+    Results["teInstant"] = InstantTestResults["web"]["pageLoad"][0]
+
+    if Settings["type"] == "pre":
+        f = open("pre.json", "w")
+        f.write(json.dumps(Results))
+        f.close()
+
+
+
 def main():
-  NATMappings=[]
   Settings={}
-  Settings["type"]= sys.argv[2] #pre or post
   Settings["teToken"] = sys.argv[1]
-  #Settings["teTarget"] = "https://dirkwblog.github.io/blog/posts/2023-08-16-hugocli/"
+  Settings["type"]= sys.argv[2] #pre or post
   Settings["teTarget"] = sys.argv[3]
   
   print("-"*20)
-
-  print("Step: "+Settings["type"].upper()+" Deployment" )
-
-  teTestId = te_create_instant_test(Settings, 1)
- 
+  print("Step: "+Settings["type"].upper()+" Deployment" ) 
   print("-"*20)
 
 if __name__ == "__main__":    

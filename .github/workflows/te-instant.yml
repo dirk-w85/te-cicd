@@ -46,6 +46,13 @@ jobs:
 #      run: python3 run main.go -domain=${{ inputs.domain }} -token=${{ secrets.TETOKEN }} -agentlabel=Servicefinder -debug=true 
       run: python3 te-cicd.py ${{ secrets.TETOKEN }} pre https://dirk-w85.github.io/te-cicd/
 
+    
+    - name: Archive Pre Test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: pre-json
+        path: pre.json
+
   build-website:
     runs-on: ubuntu-latest
     needs: pre-test
