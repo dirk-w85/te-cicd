@@ -129,7 +129,7 @@ jobs:
   revert-commit:
     runs-on: ubuntu-latest
 
-    if: ${{ failure() && steps.post-test.conclusion == 'failure'  }}
+    if: ${{ failure() }}
 
     steps:
       - name: Checkout latest code
