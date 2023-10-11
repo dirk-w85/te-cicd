@@ -72,7 +72,7 @@ def check_instant_test(Settings, teTestId):
     }
 
     while gotResults == 0:
-        print("Checking for Test Results...")
+        print("Waiting for Test Results...")
         response = requests.request("GET", url, headers=headers)
 
         if response.status_code >= 300:
@@ -81,14 +81,13 @@ def check_instant_test(Settings, teTestId):
         elif response.status_code == 200:
             InstantTestResults = json.loads(response.text)
             if "pageLoad" in InstantTestResults["web"]:
-                #print(InstantTestResults["web"]["pageLoad"][0])
                 gotResults = 1
         time.sleep(5)
     
     Results = {}
     Results["teTestId"] = teTestId
     Results["teInstant"] = InstantTestResults["web"]["pageLoad"][0]
-
+    
     if Settings["type"] == "pre":
         f = open("pre.json", "w")
         f.write(json.dumps(Results))
@@ -103,7 +102,10 @@ def main():
   Settings["teTarget"] = sys.argv[3]
   
   print("-"*20)
-  print("Step: "+Settings["type"].upper()+" Deployment" ) 
+
+  print("Step: "+Settings["type"].upper()+" Deployment" )
+  check_instant_test(Settings, te_create_instant_test(Settings, 1))
+ 
   print("-"*20)
 
 if __name__ == "__main__":    
