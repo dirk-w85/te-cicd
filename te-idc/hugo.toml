@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://dirk-w85.github.io/te-cicd/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'IDC DevOps - ThousandEyes Demo'
 theme = 'ananke'
