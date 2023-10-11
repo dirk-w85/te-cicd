@@ -37,6 +37,7 @@ def compare_pre_post(Settings, Results):
 
     if Results["teInstant"]["numErrors"] > preResults["teInstant"]["numErrors"]:
         print("Change FAILED !!")
+        sys.exit(1)
     else:
         print("Change succesful.")
 
