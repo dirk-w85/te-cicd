@@ -1,5 +1,5 @@
 +++
-title = 'IDC Demo Post'
+title = 'DevOps Demo Post'
 date = 2023-10-11T19:43:25+02:00
 draft = false
 +++
@@ -14,8 +14,6 @@ Visit the [ThousandEyes](https://www.thousandeyes.com) website!
 ## The Demo
 
 ![Workflow](/images/my_post_folder/my_image.png)
-
-![Workflow2](/images/my_post_folder/my_image2.png)
 
 Blog Update
 
