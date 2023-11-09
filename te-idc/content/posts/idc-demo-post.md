@@ -17,6 +17,7 @@ Visit the [ThousandEyes](https://www.thousandeyes.com) website!
 
 Blog Update
 
+![Workflow2](/images/my_post_folder/my_image.png2)
 
 This Demo conists of a Python script, creating Instant Tests in ThousandEyes. All triggered by an Git Push on Github. The "Push" starts an GitHub Actions worklow. 
 
